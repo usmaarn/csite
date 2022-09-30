@@ -8,7 +8,7 @@
     </section>
   </div>
   <ImageVue />
-  <section id="capture" class="w-[700px] border mx-auto space-y-5">
+  <section id="capture" class="hidden w-[700px] border mx-auto space-y-5">
     <LayoutHeader :data="selected" />
     <LayoutMain :data="selected" />
     <LayoutFooter />

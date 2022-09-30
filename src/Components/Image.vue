@@ -1,6 +1,6 @@
 <template>
   <div v-show="src" class="img-wrapper" @click.self="src = null">
-    <img :src="src" alt="banner" class="w-full md:w-auto md:h-full" />
+    <img :src="src" alt="banner" class="" />
     <a
       :href="src"
       class="generate absolute bottom-5 right-5 max-w-[100px]"
@@ -25,8 +25,11 @@ export default {
   },
   methods: {
     generate() {
-      html2canvas(document.querySelector("#capture")).then((canvas) => {
+      let capture = document.querySelector("#capture");
+      capture.classList.remove('hidden');
+      html2canvas(capture).then((canvas) => {
         this.src = canvas.toDataURL("image/png");
+        capture.classList.add('hidden')
       });
     },
   },
@@ -36,10 +39,10 @@ export default {
 <style lang="scss" scoped>
 .generate {
   @apply p-3 rounded-lg w-full md:w-auto bg-green-500 
-      text-white capitalize;
+    text-white capitalize;
 }
 .img-wrapper {
   @apply fixed z-50 top-0 left-0 w-screen h-screen bg-black/50 p-5 
-            md:p-10 flex justify-center;
+    md:p-10 flex justify-center;
 }
 </style>

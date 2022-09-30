@@ -18,16 +18,24 @@
 </template>
 
 <script>
-  export default {
-    props: ['data'],
-  }
+export default {
+  props: ["data"],
+};
 </script>
 
 <style lang="scss">
-  .logo {@apply w-24}
-  .myapp {
-    .img {@apply hidden md:inline-flex}
-    .logo{@apply w-16 md:w-24;}
-    .h1{@apply text-base leading-5 md:text-xl md:leading-6; }
+.logo {
+  @apply w-24;
+}
+.myapp {
+  .img {
+    @apply hidden md:inline-flex;
   }
+  .logo {
+    @apply w-16 md:w-24;
+  }
+  .h1 {
+    @apply text-base leading-5 md:text-xl md:leading-6;
+  }
+}
 </style>
