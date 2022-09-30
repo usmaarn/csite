@@ -1,18 +1,19 @@
 <template>
   <main class="font-bold space-y-5 px-5">
-    <section class="main-wrapper grid grid-cols-[220px_auto] gap-5">
+    <section class="main-wrapper grid grid-cols-[250px_auto] gap-5">
       <div
-        class="border border-double relative" :class="{'p-10': !img}"
+        class="relative"
+        :class="{ 'p-10': !img }"
         @click="this.$refs.input.click()"
       >
-        <img v-if="img" :src="showImage" alt="image" class="h-full" />
+        <img v-if="img" :src="showImage" alt="image" class="" />
         <p v-else class="text">click to upload passport</p>
         <input type="file" hidden @change="setImage" ref="input" />
       </div>
       <FormVue :img="data.img" />
     </section>
 
-    <section class="">
+    <section class="my-sect">
       <div class="flex items-end gap-1">
         <label class="whitespace-nowrap label">I'm a resident of:</label>
         <input type="text" />
@@ -55,7 +56,6 @@ export default {
 <style>
 .myapp .main-wrapper {
   @apply flex flex-col-reverse gap-5 md:grid;
-
 }
 .text {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 

@@ -4,7 +4,7 @@
     <section id="capture" class="myapp max-w-[700px] mx-auto">
       <LayoutHeader :data="selected" />
       <LayoutMain :data="selected" />
-      <LayoutFooter />
+      <LayoutFooter :imageUrl="selected.img2 ?? selected.img" />
     </section>
   </div>
   <ImageVue />
@@ -40,6 +40,18 @@ export default {
 
 <style lang="scss">
   .capture {
-    @apply w-[700px] border mx-auto space-y-5;
+    @apply w-[800px] border mx-auto;
+    input {
+      @apply text-2xl p-0 relative -bottom-2;
+    }
+    img.candImg{
+      @apply h-48;
+    }
+    .candDiv, .my-sect, footer{
+      @apply relative -top-10;
+    }
+    .my-sect{
+      @apply -top-12;
+    }
   }
 </style>

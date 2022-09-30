@@ -8,7 +8,7 @@
 
     <div class="my-foot flex flex-wrap items-end justify-between px-5">
       <LogoVue v-for="i in 5" :key="i" />
-      <img src="/sani2.png" alt="uba sani" class="w-32" />
+      <img :src="imageUrl" alt="uba sani" class="h-24 w-32" />
       <LogoVue v-for="i in 5" :key="i" />
     </div>
     <div class="grid grid-cols-3 bg-gradient-to-r from-red-400 to-blue-400">
@@ -23,6 +23,7 @@
 import LogoVue from "../Components/Logo.vue";
 
 export default {
+  props: ['imageUrl'],
   components: {
     LogoVue,
   },

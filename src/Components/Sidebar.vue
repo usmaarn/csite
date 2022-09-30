@@ -21,6 +21,7 @@ export default {
           vice: "Shetima",
           username: "tinubu",
           img: "/bat.jpeg",
+          img2: "/bat2.jpeg",
         },
         {
           id: 2,
@@ -28,7 +29,8 @@ export default {
           candidate: "Uba Sanni",
           username: "Uba Sanni",
           vice: "hadiza balarabe",
-          img: "/sani2.jpeg", 
+          img: "/sani2.jpeg",
+          img2: "/sani2.png",
         },
         {
           id: 3,

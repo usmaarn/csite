@@ -1,6 +1,6 @@
 <template>
-  <div class="cand-img space-y-2 -top-12">
-    <img :src="img" alt="" class="h-32" />
+  <div class="candDiv space-y-2 -top-12">
+    <img :src="img" alt="" class="candImg h-36" />
     <div class="flex gap-2 items-end">
       <label for="name">Name:</label>
       <input type="text" />
@@ -30,16 +30,12 @@
 </template>
 
 <script>
-    export default {
-        props:['img'],
-    }
+export default {
+  props: ["img"],
+};
 </script>
 
 <style lang="scss">
-    // .myapp {
-    //     .cand-img{@apply w-full h-auto md:w-auto h-32}
-    // }
-
 label {
   @apply text-sm text-green-500 whitespace-nowrap uppercase;
 }
