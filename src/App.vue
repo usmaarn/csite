@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <MySidebar @changeType="handleChange" />
-    <section id="capture" class="myapp">
+    <section id="capture" class="myapp max-w-[700px] mx-auto">
       <LayoutHeader :data="selected" />
       <LayoutMain :data="selected" />
       <LayoutFooter />

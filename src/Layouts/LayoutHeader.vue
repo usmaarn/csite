@@ -35,7 +35,7 @@ export default {
     @apply w-16 md:w-24;
   }
   .h1 {
-    @apply text-base leading-5 md:text-xl md:leading-6;
+    @apply text-base leading-5 md:text-xl md:leading-6 whitespace-nowrap;
   }
 }
 </style>
