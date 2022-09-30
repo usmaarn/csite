@@ -1,9 +1,9 @@
 <template>
-  <main class="font-bold space-y-5">
-    <section class="grid grid-cols-[220px_auto] gap-10">
-      <div class="border" @click="this.$refs.input.click()">
+  <main class="font-bold space-y-5 px-5">
+    <section class="grid grid-cols-[220px_auto] gap-5">
+      <div class="border border-double relative" @click="this.$refs.input.click()">
         <img v-if="img" :src="showImage" alt="image" class="h-full" />
-        <p v-else>click to upload passport</p>
+        <p v-else class="text">click to upload passport</p>
         <input type="file" hidden @change="setImage" ref="input" />
       </div>
 
@@ -54,7 +54,9 @@
 </template>
 
 <script>
+
 export default {
+
   data() {
     return {
       img: null,
@@ -83,5 +85,8 @@ label {
 input {
   @apply flex-grow border-b-2 border-green-500 w-full
             outline-0;
+}
+.text{
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-zinc-400;
 }
 </style>

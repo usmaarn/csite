@@ -1,5 +1,5 @@
 <template>
-  <header class="flex items-center justify-between">
+  <header class="flex items-center justify-between p-5">
     <div class="flex items-center">
       <img src="/logo.png" alt="logo" class="w-24" />
       <h1
@@ -20,7 +20,5 @@
     </div>
   </header>
 </template>
-
-<script></script>
 
 <style></style>
