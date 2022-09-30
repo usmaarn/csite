@@ -6,7 +6,7 @@
       is how Nigeria works!
     </p>
 
-    <div class="flex flex-wrap items-end justify-between px-5">
+    <div class="my-foot flex flex-wrap items-end justify-between px-5">
       <LogoVue v-for="i in 5" :key="i" />
       <img src="/sani2.png" alt="uba sani" class="w-32" />
       <LogoVue v-for="i in 5" :key="i" />
@@ -29,4 +29,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.myapp{
+  .my-foot{
+    @apply hidden md:flex;
+  }
+}
+</style>

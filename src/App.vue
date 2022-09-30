@@ -1,15 +1,18 @@
 <template>
-  <ImageVue :src="img" />
-  <div class="grid grid-cols-[200px,auto]">
-    <MySidebar />
-    <section>
-      <div id="capture" class="max-w-[700px] border mx-auto space-y-5">
-        <LayoutHeader />
-        <LayoutMain />
-        <LayoutFooter />
-      </div>
+  <div class="">
+    <MySidebar @changeType="handleChange" />
+    <section class="myapp max-w-[700px] border mx-auto space-y-5">
+      <LayoutHeader :data="selected" />
+      <LayoutMain :data="selected" />
+      <LayoutFooter />
     </section>
   </div>
+  <ImageVue />
+  <section id="capture" class="w-[700px] border mx-auto space-y-5">
+    <LayoutHeader :data="selected" />
+    <LayoutMain :data="selected" />
+    <LayoutFooter />
+  </section>
 </template>
 
 <script>
@@ -26,10 +29,18 @@ export default {
     LayoutFooter,
     MySidebar,
     ImageVue,
-  }
+  },
+  data() {
+    return {
+      selected: {},
+    };
+  },
+  methods: {
+    handleChange(item) {
+      this.selected = item;
+    },
+  },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

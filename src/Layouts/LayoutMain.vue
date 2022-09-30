@@ -1,43 +1,15 @@
 <template>
   <main class="font-bold space-y-5 px-5">
-    <section class="grid grid-cols-[220px_auto] gap-5">
-      <div class="border border-double relative" @click="this.$refs.input.click()">
+    <section class="main-wrapper grid grid-cols-[220px_auto] gap-5">
+      <div
+        class="border border-double relative" :class="{'p-10': !img}"
+        @click="this.$refs.input.click()"
+      >
         <img v-if="img" :src="showImage" alt="image" class="h-full" />
         <p v-else class="text">click to upload passport</p>
         <input type="file" hidden @change="setImage" ref="input" />
       </div>
-
-      <div class="space-y-2 relative -top-12">
-        <img src="/sani1.png" alt="" class="w-52" />
-        <div class="flex gap-2 items-end">
-          <label for="name">Name:</label>
-          <input type="text" />
-        </div>
-        <div class="flex gap-2 items-end">
-          <label for="name">ward:</label>
-          <input type="text" />
-        </div>
-
-        <div class="">
-          <input
-            type="text"
-            class="w-full border-b-2 border-green-500"
-          />
-        </div>
-
-        <div class="flex gap-2 items-end">
-          <label for="name">polling unit:</label>
-          <input type="text" />
-        </div>
-        <div class="flex gap-2 items-end">
-          <label for="name">p.v.c no:</label>
-          <input type="text" />
-        </div>
-        <div class="flex gap-2 items-end">
-          <label for="name">phone no:</label>
-          <input type="text" />
-        </div>
-      </div>
+      <FormVue :img="data.img" />
     </section>
 
     <section class="">
@@ -47,16 +19,18 @@
       </div>
       <div class="text-green-500">
         I will <span class="text-red-500 uppercase">vote</span> for
-        <span class="text-red-500 uppercase">sen. uba sani/hadiza balarabe</span>
+        <span class="text-red-500 uppercase">
+          {{ data.candidate }}{{ data.vice && "/" + data.vice }}
+        </span>
       </div>
     </section>
   </main>
 </template>
 
 <script>
-
+import FormVue from "../Components/Form.vue";
 export default {
-
+  props: ["data"],
   data() {
     return {
       img: null,
@@ -74,19 +48,17 @@ export default {
       return URL.createObjectURL(this.img);
     },
   },
+  components: { FormVue },
 };
 </script>
 
 <style>
-label {
-  @apply text-sm text-green-500 whitespace-nowrap uppercase;
+.myapp .main-wrapper {
+  @apply flex flex-col-reverse gap-5 md:grid;
+
 }
-.label{text-transform: initial}
-input {
-  @apply flex-grow border-b-2 border-green-500 w-full
-            outline-0;
-}
-.text{
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-zinc-400;
+.text {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+    text-center text-zinc-400;
 }
 </style>

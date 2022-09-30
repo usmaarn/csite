@@ -1,11 +1,17 @@
 <template>
   <div v-show="src" class="img-wrapper" @click.self="src = null">
     <img :src="src" alt="banner" class="w-full md:w-auto md:h-full" />
-    <a :href="src" class="generate" download="Generted_APC_Poster_Card">
+    <a
+      :href="src"
+      class="generate absolute bottom-5 right-5 max-w-[100px]"
+      download="Generted_APC_Poster_Card"
+    >
       Download
     </a>
   </div>
-  <button @click="generate" class="generate">generate</button>
+  <div class="p-5 md:fixed bottom-0 right-0">
+    <button @click="generate" class="generate btn">generate</button>
+  </div>
 </template>
 
 <script>
@@ -21,17 +27,15 @@ export default {
     generate() {
       html2canvas(document.querySelector("#capture")).then((canvas) => {
         this.src = canvas.toDataURL("image/png");
-        document.body.style.height = window.innerHeight;
-        document.body.style.overflowY = "hidden";
       });
     },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .generate {
-  @apply fixed bottom-5 right-5 p-3 rounded-full bg-green-500 
+  @apply p-3 rounded-lg w-full md:w-auto bg-green-500 
       text-white capitalize;
 }
 .img-wrapper {

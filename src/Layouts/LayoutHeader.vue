@@ -1,24 +1,33 @@
 <template>
-  <header class="flex items-center justify-between p-5">
-    <div class="flex items-center">
-      <img src="/logo.png" alt="logo" class="w-24" />
+  <header class="flex items-start justify-between p-5">
+    <div class="flex items-center logo">
+      <img src="/logo.png" alt="logo" />
       <h1
-        class="font-[initial] uppercase text-xl leading-6 font-black text-green-500"
+        class="h1 font-[initial] uppercase text-xl leading-6 font-black text-green-500"
       >
-        UBA SANI <br />
-        <span class="text-red-500">governorship</span> <br />
+        {{ data.username }} <br />
+        <span class="text-red-500">{{ data.name }}</span> <br />
         movement
       </h1>
     </div>
 
-    <div class="">
-      <p class="text-[9px] uppercase">all progressive congress</p>
-      <div class="flex items-center gap-3">
-        <img src="/apc.png" alt="" class="w-16" />
-        <img src="/tp.png" alt="" class="w-16" />
-      </div>
+    <div class="img">
+      <img src="/apc-logo.jpeg" alt="apc thumbprint" class="w-32" />
     </div>
   </header>
 </template>
 
-<style></style>
+<script>
+  export default {
+    props: ['data'],
+  }
+</script>
+
+<style lang="scss">
+  .logo {@apply w-24}
+  .myapp {
+    .img {@apply hidden md:inline-flex}
+    .logo{@apply w-16 md:w-24;}
+    .h1{@apply text-base leading-5 md:text-xl md:leading-6; }
+  }
+</style>
