@@ -1,18 +1,13 @@
 <template>
   <div class="">
     <MySidebar @changeType="handleChange" />
-    <section class="myapp max-w-[700px] border mx-auto space-y-5">
+    <section id="capture" class="myapp">
       <LayoutHeader :data="selected" />
       <LayoutMain :data="selected" />
       <LayoutFooter />
     </section>
   </div>
   <ImageVue />
-  <section id="capture" class="hidden w-[700px] border mx-auto space-y-5">
-    <LayoutHeader :data="selected" />
-    <LayoutMain :data="selected" />
-    <LayoutFooter />
-  </section>
 </template>
 
 <script>
@@ -43,4 +38,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+  .capture {
+    @apply w-[700px] border mx-auto space-y-5;
+  }
+</style>

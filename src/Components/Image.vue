@@ -26,10 +26,12 @@ export default {
   methods: {
     generate() {
       let capture = document.querySelector("#capture");
-      capture.classList.remove('hidden');
+      capture.classList.add('capture');
+      capture.classList.remove('myapp');
       html2canvas(capture).then((canvas) => {
         this.src = canvas.toDataURL("image/png");
-        capture.classList.add('hidden')
+        capture.classList.remove('capture')
+        capture.classList.add('myapp')
       });
     },
   },
