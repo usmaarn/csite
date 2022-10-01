@@ -7,13 +7,13 @@ export default function LoginBtn() {
   if (session) {
     return (
         <Link href="/users">
-          <a className="px-5 py-3 rounded capitalize bg-green-400 text-white font-bold">
+          <a className="px-5 py-3 rounded capitalize bg-green-400 font-bold">
             View Data
           </a>
         </Link>
     )
   }
   return (
-      <button className="px-5 py-3 rounded capitalize bg-green-400 text-white font-bold" onClick={() => signIn()}>Sign in</button>
+      <button className="px-5 py-3 rounded capitalize bg-green-400 font-bold" onClick={() => signIn()}>Sign in</button>
   )
 }
