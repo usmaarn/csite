@@ -1,17 +1,17 @@
 import { PrismaClient } from ".prisma/client";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export default function Users({users}) {
 
     const session = useSession();
     users = JSON.parse(users);
 
-    useEffect(() => {
-        if(!session.data) {
-            return location.href = '/';
-        }
-    }, [])
+    // useEffect(() => {
+    //     if(!session.data) {
+    //         return location.href = '/';
+    //     }
+    // }, [])
 
     return(
         <section>
