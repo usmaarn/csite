@@ -13,7 +13,7 @@ export default function Navbar(){
           <h1 className="uppercase font-black text-lg leading-5">
             <span className="tracking-normal text-green-400">tinubu/shetima</span><br />
             <span className="tracking-[0.21rem] text-blue-400">progressive</span><br />
-            <span className="tracking-[0.5rem] text-red-100">movement</span>
+            <span className="tracking-[0.5rem] text-red-100 movement">movement</span>
           </h1>
         </a>
       </Link>

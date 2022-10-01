@@ -41,7 +41,7 @@ export default function Form({}) {
   }
 
   return (
-    <section>
+    <section className="form">
       <Navbar />
       <div className="max-w-[700px] mx-auto p-5 rounded-lg border">
         <h1 className="text-xl font-bold  text-red-400 uppercase mb-5">
