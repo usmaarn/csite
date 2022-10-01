@@ -2,7 +2,7 @@ import { PrismaClient } from ".prisma/client";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-export default function users({users}) {
+export default function Users({users}) {
 
     const session = useSession();
     users = JSON.parse(users);
