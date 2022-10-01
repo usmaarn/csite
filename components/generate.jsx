@@ -14,7 +14,7 @@ export default function Generate({details}) {
     const onButtonClick = () => {
         html2canvas(node.current).then(canvas => {
             let a = document.createElement('a');
-            a.download = 'my-download.png';
+            a.download = data.name+ Date.now()+ '.png';
             a.href = canvas.toDataURL("image/png");
             a.click();
             location.reload();
