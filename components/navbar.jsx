@@ -18,9 +18,9 @@ export default function Navbar(){
         </a>
       </Link>
 
-      <div className="hidden md:block">
+      {/* <div className="hidden md:block">
         <LoginBtn />
-      </div>
+      </div> */}
     </nav>
   )
 }
