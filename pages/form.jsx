@@ -18,7 +18,7 @@ const schema = yup.object({
   address: yup.string().trim().required().min(7).max(255),
 });
 
-export default function form({}) {
+export default function Form({}) {
   const [details, setDetails] = useState(null);
   const [image, setImage] = useState(null);
   const {register, handleSubmit, formState: { errors },reset } = useForm({
