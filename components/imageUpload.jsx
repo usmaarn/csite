@@ -19,7 +19,12 @@ export default function ImageUpload({onChange}){
             <div onClick={() => inputRef.current.click()} 
                 className="w-64 h-64 rounded-full border mx-auto overflow-hidden relative">
                 <input type="file" hidden ref={inputRef} onChange={handleChange} />
-                {image && <Image layout="fill" src={URL.createObjectURL(image)} />}
+                {image 
+                    ? <Image layout="fill" src={URL.createObjectURL(image)} />
+                    : <p className="flex items-center justify-center h-full">
+                            Click to Upload Image
+                        </p>
+                }
             </div>
         </div>
     )

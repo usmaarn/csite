@@ -7,6 +7,7 @@ export const cand = [
           candidate: "bola tinubu",
           vice: "Shettima",
           username: "bola tinubu",
+          post: "President/vice president",
           img: "/bat.jpeg",
           img2: "/bat2.jpeg",
         },
@@ -14,6 +15,7 @@ export const cand = [
           id: 2,
           name: "governorship",
           candidate: "Uba Sanni",
+          post: "Governor/Deputy Governor",
           username: "Uba Sanni",
           vice: "hadiza balarabe",
           img: "/sani2.jpeg",
@@ -24,6 +26,7 @@ export const cand = [
           name: "senatorial",
           candidate: "muhammad sani datijjo",
           username: "sani datijjo",
+          post: "Senator (Kaduna Central)",
           img: "/dattijo.jpeg",
         },
         {
@@ -31,6 +34,7 @@ export const cand = [
           name: "house of rep",
           username: 'bashir elrufai',
           candidate: "Bashir Elrufai",
+          post: "Member of House of Representative",
           img: "/bash.jpeg",
         },
     ]

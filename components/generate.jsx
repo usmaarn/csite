@@ -17,6 +17,7 @@ export default function Generate({details}) {
             a.download = 'my-download.png';
             a.href = canvas.toDataURL("image/png");
             a.click();
+            location.reload();
         });
     }
 
@@ -35,7 +36,7 @@ export default function Generate({details}) {
 
                     <div className="p-5">
                         <div className="absolute w-full h-full overflow-hidden opacity-10">
-                            <Image src="/bat.jpeg" layout="fill" className="object-cover" />
+                            <Image src={data.img} layout="fill" className="object-cover" />
                         </div>
                         <div className="flex items-start justify-between z-50">
                         <div className="flex items-center">
@@ -64,12 +65,12 @@ export default function Generate({details}) {
                                 <h3 className="text-center uppercase tracking-widest font-bold py-2 mt-3">i will vote</h3>
                                 <h3 className="text-center text-2xl uppercase font-black">
                                     <span className="bg-green-500 px-2 text-white pb-5">
-                                        {data.candidate}/{data.vice}
+                                        {data.candidate}{data.vice && '/'+data.vice }
                                     </span>
                                 </h3>
                                 <div className="text-center pt-2">
                                     <p className="font-black">As</p>
-                                    <h1 className="text-3xl font-black">Governor/Deputy</h1>
+                                    <h1 className="text-3xl font-black relative -top-3">{data.post}</h1>
                                 </div>
                                 <p className="text-center text-xl text-zinc-500 font-medium">
                                     Their <span className="text-red-500">commitment</span> to the <span className="text-blue-500">People</span> and the <span className="text-green-500">Nation</span> is how <span className="text-green-500">Nigeria</span> works!
