@@ -1,6 +1,6 @@
-html, body {
-  font-family: raleway, 'sans-serif';
-}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800;900&display=swap');
+
+html, body {font-family: raleway, 'sans-serif';}
 
   .input-box{
     @apply flex flex-col py-2;
@@ -15,7 +15,6 @@ html, body {
   .btn {
     @apply px-10 py-2.5 rounded bg-green-400 text-white hover:opacity-60 font-bold;
   }
-
 
 @tailwind base;
 @tailwind components;

@@ -17,6 +17,10 @@ const schema = yup.object({
 });
 
 export default async function handler(req, res) {
+  if (req.method.toLowerCase() !== "post") {
+    res.status(404).end("Page Not Found");
+  }
+
   try {
     let result = await schema.validate(req.body);
     const prisma = new PrismaClient();

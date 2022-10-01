@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LoginBtn from "./login-btn";
 
 export default function Navbar(){
   return(
@@ -18,11 +19,7 @@ export default function Navbar(){
       </Link>
 
       <div className="">
-        <Link href="/form" >
-          <a className="px-5 py-3 rounded capitalize bg-green-400 text-white font-bold">
-            Generate
-          </a>
-        </Link>
+        <LoginBtn />
       </div>
     </nav>
   )
