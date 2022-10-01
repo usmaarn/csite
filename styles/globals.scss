@@ -1,0 +1,22 @@
+html, body {
+  font-family: raleway, 'sans-serif';
+}
+
+  .input-box{
+    @apply flex flex-col py-2;
+    label {
+      @apply text-sm uppercase font-medium text-green-500;
+    }
+    input {
+      @apply ring-1 rounded px-2 py-1.5 mt-0.5 ring-green-400 focus:outline-none;
+    }
+  }
+
+  .btn {
+    @apply px-10 py-2.5 rounded bg-green-400 text-white hover:opacity-60 font-bold;
+  }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
