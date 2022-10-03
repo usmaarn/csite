@@ -17,6 +17,7 @@ html, body {font-family: raleway, 'sans-serif';}
   }
 
 .wrapper {
+  min-height: 100vh;
   background-image: linear-gradient(red, rgba(0,0,0,0.5)), url('/bat.jpeg');
   background-position: center;
   background-size: contain;
@@ -26,6 +27,9 @@ html, body {font-family: raleway, 'sans-serif';}
 .form .movement {
   @apply text-red-400;
 }
+
+@import 'poster';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
