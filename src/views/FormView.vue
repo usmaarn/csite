@@ -75,11 +75,12 @@ export default {
       addUser(this.info)
         .then(() => {
           this.store.data = this.info;
-          this.$router.push('/poster');
+          this.$router.push('/poster')
+        })
         .catch((err) => (this.error = err.message));
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>

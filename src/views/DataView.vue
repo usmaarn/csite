@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import NavbarVue from "../components/Navbar.vue";
 import TableVue from "../components/Table.vue";
 import useAuthStore from "../stores/auth";
