@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="item in items"
+          v-for="item,index in items"
           :key="item.id"
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
         >
@@ -26,7 +26,7 @@
             scope="row"
             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
           >
-            {{ item.id }}
+            {{ index + 1 }}
           </th>
           <th
             scope="row"
@@ -35,7 +35,7 @@
             {{ item.name }}
           </th>
           <td class="py-4 px-6">{{ item.pvc }}</td>
-          <td class="py-4 px-6">{{ item.tel }}</td>
+          <td class="py-4 px-6">0{{ item.tel }}</td>
           <td class="py-4 px-6">{{ item.unit }}</td>
         </tr>
       </tbody>
@@ -44,15 +44,14 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getUsers } from '../helper/firebase';
+
+
 
 export default {
-  async mounted() {
-    let response = await axios.get(
-      "http://usmaarn-env.eba-mkxhze2r.us-east-1.elasticbeanstalk.com/api/apc/data"
-    );
-    let data = await response.data;
-    this.items = data;
+  async mounted() {;
+    let users = await getUsers();
+    this.items = users;
   },
   data(){
     return {items: []}

@@ -44,14 +44,7 @@ export const cands = [
 
 const useDataStore = defineStore("data", () => {
   const cand = ref(cands);
-  const data = ref({
-    name: "",
-    ward: "",
-    pvc: "",
-    tel: "",
-    unit: "",
-    address: "",
-  });
+  const data = ref(null);
   return { data, cand };
 });
 

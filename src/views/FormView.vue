@@ -6,12 +6,33 @@
         Fill your Information
       </h1>
       <form @submit.prevent="submit">
-        <InputComponent label="Full Name" name="name" />
-        <InputComponent label="Ward" name="ward" />
-        <InputComponent label="pvc number" name="pvc" />
-        <InputComponent label="phone number" name="tel" />
-        <InputComponent label="polling unit" name="unit" />
-        <InputComponent label="residential address" name="address" />
+        <p v-if="error" class="text-red-500">{{ error }}</p>
+        <input
+          :disabled="loading"
+          placeholder="Full Name"
+          v-model="info.name"
+        />
+        <input :disabled="loading" placeholder="Ward" v-model="info.ward" />
+        <input
+          :disabled="loading"
+          placeholder="pvc number"
+          v-model="info.pvc"
+        />
+        <input
+          :disabled="loading"
+          placeholder="phone number"
+          v-model="info.tel"
+        />
+        <input
+          :disabled="loading"
+          placeholder="polling unit"
+          v-model="info.unit"
+        />
+        <input
+          :disabled="loading"
+          placeholder="residential address"
+          v-model="info.address"
+        />
         <button
           :disabled="loading"
           :class="{ btn: true, 'cursor-not-allowed opacity-40': loading }"
@@ -24,46 +45,48 @@
 </template>
 
 <script>
-import InputComponent from "../components/Input.vue";
-import axios from "axios";
-import useDataStore from "../stores/data";
-import useErrorStore from "../stores/error";
-import Navbar from "../components/Navbar.vue";
 import Navbar1 from "../components/Navbar.vue";
+import { addUser } from "../helper/firebase";
+import useDataStore from "../stores/data";
 
 export default {
+  setup() {
+    const store = useDataStore();
+    return { store };
+  },
   data() {
     return {
       loading: false,
+      error: null,
+      info: {
+        name: "",
+        ward: "",
+        pvc: "",
+        tel: "",
+        unit: "",
+        address: "",
+      },
     };
   },
-  setup() {
-    const dataStore = useDataStore();
-    const errorStore = useErrorStore();
-
-    return { dataStore, errorStore };
-  },
-  components: { InputComponent, Navbar, Navbar1 },
+  components: { Navbar1 },
   methods: {
     submit() {
-      this.loading = true;
-      axios
-        .post(
-          "http://usmaarn-env.eba-mkxhze2r.us-east-1.elasticbeanstalk.com/api/apc/add",
-          this.dataStore.data
-        )
+      // this.loading = true;
+      addUser(this.info)
         .then(() => {
-          this.loading = false;
-          this.$router.push("/poster");
-        })
-        .catch((err) => {
-          this.errorStore.errors = {};
-          for (let error in err.response.data.errors) {
-            this.errorStore.errors[error] = err.response.data.errors[error][0];
-          }
-          this.loading = false;
-        });
+          this.store.data = this.info;
+          this.$router.push('/poster');
+        .catch((err) => (this.error = err.message));
     },
   },
 };
 </script>
+
+<style scoped>
+form {
+  @apply flex flex-col gap-5;
+}
+input {
+  @apply px-3 py-2 rounded border;
+}
+</style>

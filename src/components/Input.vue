@@ -1,20 +1,16 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="py-2">
-    <label
-      for="name"
-      class="capitalize"
-      :class="{ 'text-red-500': errorStore.errors[name] }"
-    >
+    <label for="name" class="capitalize" :class="{ 'text-red-500': false }">
       {{ label }}
     </label>
     <input
       :type="type ?? 'text'"
       v-model="dataStore.data[name]"
-      :class="{ input: true, 'border-red-500': errorStore.errors[name] }"
+      :class="{ input: true, 'border-red-500': false }"
     />
-    <p v-if="errorStore.errors[name]" class="text-red-500 text-sm">
-      {{ errorStore.errors[name] }}
+    <p v-if="false" class="text-red-500 text-sm">
+      <!-- {{ errorStore.errors[name] }} -->
     </p>
   </div>
 </template>
@@ -28,7 +24,6 @@ export default {
   setup() {
     const dataStore = useDataStore();
     const errorStore = useErrorStore();
-
     return { dataStore, errorStore };
   },
 };

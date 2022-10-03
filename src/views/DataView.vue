@@ -35,17 +35,12 @@ export default {
   methods: {
     login() {
       let data = { username: this.username, password: this.password };
-      axios
-        .post(
-          "http://usmaarn-env.eba-mkxhze2r.us-east-1.elasticbeanstalk.com/api/apc/admin",
-          data
-        )
-        .then((res) => {
-          localStorage.setItem("csite-admin", JSON.stringify(res.data.user));
-          this.auth.user = res.data.user;
-        })
-        .catch((err) => console.warn(err.response.data));
+      //  localStorage.setItem("csite-admin", JSON.stringify(res.data.user));
+      //       this.auth.user = res.data.user;
     },
+  },
+  mounted() {
+    
   },
 };
 </script>
