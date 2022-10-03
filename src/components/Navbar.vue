@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem("csite-data");
+      localStorage.removeItem("csite-admin");
       this.auth.user = null;
     },
   },

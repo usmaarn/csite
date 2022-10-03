@@ -8,8 +8,9 @@
 
   <form v-else @submit.prevent="login">
     <h1>Login</h1>
-    <input type="text" v-model="username" placeholder="Username" />
-    <input type="password" v-model="password" placeholder="Password" />
+    <p v-if="error" class="text-red-500 text-sm">{{ error }}</p>
+    <input type="text" v-model="user.username" placeholder="Username" required />
+    <input type="password" v-model="user.password" placeholder="Password" required />
     <button>login</button>
   </form>
 </template>
@@ -17,6 +18,7 @@
 <script>
 import NavbarVue from "../components/Navbar.vue";
 import TableVue from "../components/Table.vue";
+import { getAuth } from "../helper/firebase";
 import useAuthStore from "../stores/auth";
 
 export default {
@@ -27,20 +29,24 @@ export default {
   },
   data() {
     return {
-      username: "",
-      password: "",
+      user: {
+        username: "",
+        password: "",
+      },
+      error: null,
     };
   },
   methods: {
-    login() {
-      let data = { username: this.username, password: this.password };
-      //  localStorage.setItem("csite-admin", JSON.stringify(res.data.user));
-      //       this.auth.user = res.data.user;
+    async login() {
+      let {user} = await getAuth(this.user);
+      if (user) {
+        localStorage.setItem('csite-admin', JSON.stringify(user))
+        return this.auth.user = user;
+      }
+      return this.error = "Invalid Credentials";
     },
   },
-  mounted() {
-    
-  },
+  mounted() {},
 };
 </script>
 

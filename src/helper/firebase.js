@@ -5,6 +5,9 @@ import {
   getDocs,
   setDoc,
   doc,
+  query,
+  where,
+  getDoc,
 } from "firebase/firestore/lite";
 import { getAnalytics } from "firebase/analytics";
 import * as yup from "yup";
@@ -41,5 +44,12 @@ let schema = yup.object().shape({
 });
 export async function addUser(data) {
   data = await schema.validate(data);
-  await setDoc(doc(db, "users", data.tel), {...data});
+  await setDoc(doc(db, "users", data.tel), { ...data });
+}
+
+export async function getAuth({ username, password }) {
+  const docRef = doc(db, "admin", username);
+  const docSnap = await getDoc(docRef);
+  let admin = docSnap.data();
+  return admin?.password == password ? {user: admin} : {user: null}
 }

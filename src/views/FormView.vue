@@ -7,31 +7,46 @@
       </h1>
       <form @submit.prevent="submit">
         <p v-if="error" class="text-red-500">{{ error }}</p>
-        <input required
+        <input
+          required
           :disabled="loading"
           placeholder="Full Name"
           v-model="info.name"
+          pattern="[a-zA-Z]{3,}\s[A-Za-z]{3,}"
         />
-        <input required :disabled="loading" placeholder="Ward" v-model="info.ward" />
-        <input required
+        <input
+          required
+          :disabled="loading"
+          placeholder="Ward"
+          v-model="info.ward"
+          pattern="[A-Za-z0-9\s]{3,}"
+        />
+        <input
+          required
           :disabled="loading"
           placeholder="pvc number"
           v-model="info.pvc"
+          pattern="[a-z0-9]{5,}"
         />
-        <input required
+        <input
+          required
           :disabled="loading"
           placeholder="phone number"
           v-model="info.tel"
+          pattern="^0[789][01][0-9]{8}"
         />
-        <input required
+        <input
+          required
           :disabled="loading"
           placeholder="polling unit"
           v-model="info.unit"
         />
-        <input required
+        <input
+          required
           :disabled="loading"
           placeholder="residential address"
           v-model="info.address"
+          minlength="5"
         />
         <button
           :disabled="loading"
@@ -75,12 +90,12 @@ export default {
       addUser(this.info)
         .then(() => {
           this.store.data = this.info;
-          this.$router.push('/poster')
+          this.$router.push("/poster");
         })
         .catch((err) => (this.error = err.message));
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
