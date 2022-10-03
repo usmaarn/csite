@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Navbar from "../components/Navbar.vue";
+import useAuthStore from "../stores/auth";
+const auth = useAuthStore();
 </script>
 
 <template>
@@ -12,6 +14,9 @@ import Navbar from "../components/Navbar.vue";
         <a className="px-10 py-5 rounded bg-green-400 font-bold">
           Generate your Poster
         </a>
+      </RouterLink>
+      <RouterLink v-if="auth?.user" to="/data">
+        <a className="px-10 py-5 rounded bg-green-400 font-bold"> View Data </a>
       </RouterLink>
     </main>
   </section>

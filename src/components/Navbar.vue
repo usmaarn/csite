@@ -1,12 +1,12 @@
 <template>
   <header>
-    <nav class="p-5 flex items-center justify-between">
+    <nav class="p-2 md:p-5 flex items-center justify-between">
       <RouterLink to="/">
         <a className="flex items-center gap-2 scale-75 md:scale-100 ">
           <div className="bg-white rounded p-1">
-            <img src="/logo.png" alt="" class="w-12 h-12" />
+            <img src="/logo.png" alt="" class="w-16" />
           </div>
-          <h1 className="uppercase font-black text-lg leading-5">
+          <h1 className="uppercase font-black text-lg leading-5 hidden sm:block">
             <span className="tracking-normal text-green-400"
               >tinubu/shetima</span
             ><br />
@@ -47,6 +47,6 @@ export default {
 
 <style scoped>
 .btn {
-  @apply px-5;
+  @apply px-5 text-base py-2;
 }
 </style>

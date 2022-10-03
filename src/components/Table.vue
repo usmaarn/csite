@@ -1,14 +1,19 @@
 <template>
   <div class="overflow-x-auto relative">
+    <h1 class="md:text-xl capitalize p-5">
+        <b class="text-2xl">{{ items.length }}</b> 
+        users registered so far
+    </h1>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
-          <th scope="col" class="py-3 px-6">Product name</th>
-          <th scope="col" class="py-3 px-6">Color</th>
-          <th scope="col" class="py-3 px-6">Category</th>
-          <th scope="col" class="py-3 px-6">Price</th>
+          <th scope="col" class="py-3 px-6">ID</th>
+          <th scope="col" class="py-3 px-6">Name</th>
+          <th scope="col" class="py-3 px-6">Pvc Number</th>
+          <th scope="col" class="py-3 px-6">Phone number</th>
+          <th scope="col" class="py-3 px-6">polling unit</th>
         </tr>
       </thead>
       <tbody>
@@ -17,6 +22,12 @@
           :key="item.id"
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
         >
+        <th
+            scope="row"
+            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {{ item.id }}
+          </th>
           <th
             scope="row"
             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -25,7 +36,7 @@
           </th>
           <td class="py-4 px-6">{{ item.pvc }}</td>
           <td class="py-4 px-6">{{ item.tel }}</td>
-          <td class="py-4 px-6">{{ item.address }}</td>
+          <td class="py-4 px-6">{{ item.unit }}</td>
         </tr>
       </tbody>
     </table>
@@ -48,3 +59,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+    th, td{@apply whitespace-nowrap}
+</style>
