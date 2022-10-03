@@ -12,21 +12,19 @@
           :disabled="loading"
           placeholder="Full Name"
           v-model="info.name"
-          pattern="[a-zA-Z]{3,}\s[A-Za-z]{3,}"
+          minlength="7"
         />
         <input
           required
           :disabled="loading"
           placeholder="Ward"
           v-model="info.ward"
-          pattern="[A-Za-z0-9\s]{3,}"
         />
         <input
           required
           :disabled="loading"
           placeholder="pvc number"
           v-model="info.pvc"
-          pattern="[a-z0-9]{5,}"
         />
         <input
           required
