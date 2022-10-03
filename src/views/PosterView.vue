@@ -2,7 +2,7 @@
   <div className="poster-page-select">
     <label htmlFor="cand">Candidate</label>
     <select class="capitalize text-center" @change="handleChange">
-      <option v-for="item in dataStore.cand" :key="item.id" :value="item.id">
+      <option v-for="item in store.cand" :key="item.id" :value="item.id">
         {{ item.candidate }}
       </option>
     </select>
@@ -28,14 +28,14 @@
         <div className="grid grid-cols-5 z-10 pt-5 gap-5">
           <div class="col-span-2">
             <div className="avatar-wrapper" @click="this.$refs.input.click()">
-              <input type="file" hidden @change="handleClick" ref="input" />
+              <input type="file" hidden @change="handleClick" accept="image/*" ref="input" />
               <img v-if="image" :src="imageUrl" />
               <span v-else>click here to upload image</span>
             </div>
           </div>
           <div className="col-span-3 flex flex-col items-center">
             <p className="my-name-is">My name is</p>
-            <h1 className="name">{{ dataStore.data.name }}</h1>
+            <h1 className="name">{{ store.data.name }}</h1>
             <h3 className="i-will-vote">and i will vote</h3>
             <h3 className="candidate space-x-2">
               <span>{{ data.candidate }}</span>
@@ -74,24 +74,25 @@ import useDataStore from "../stores/data";
 import html2canvas from "html2canvas";
 
 export default {
-  mounted() {
-    if (!this.dataStore.data.name) {
-      return this.$router.push("/form");
+  beforeMount() {
+    console.log(this.store.data);
+    if (!this.store.data) {
+      return location.href = '/form';
     }
   },
   setup() {
-    const dataStore = useDataStore();
-    return { dataStore };
+    const store = useDataStore();
+    return { store };
   },
   data() {
     return {
-      data: this.dataStore.cand[0],
+    data: this.store.cand[0],
       image: null,
     };
   },
   methods: {
     handleChange(e) {
-      let selected = this.dataStore.cand.find((c) => c.id == e.target.value);
+      let selected = this.store.cand.find((c) => c.id == e.target.value);
       this.data = selected;
     },
     handleClick(e) {
@@ -105,7 +106,7 @@ export default {
         // return document.body.append(canvas);
         let a = document.createElement("a");
         a.href = canvas.toDataURL("image/png");
-        a.download = this.dataStore.data.name + Date.now();
+        a.download = this.store.data.name + Date.now();
         a.click();
         flier.classList.remove("flier");
       });

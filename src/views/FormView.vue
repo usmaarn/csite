@@ -7,28 +7,28 @@
       </h1>
       <form @submit.prevent="submit">
         <p v-if="error" class="text-red-500">{{ error }}</p>
-        <input
+        <input required
           :disabled="loading"
           placeholder="Full Name"
           v-model="info.name"
         />
-        <input :disabled="loading" placeholder="Ward" v-model="info.ward" />
-        <input
+        <input required :disabled="loading" placeholder="Ward" v-model="info.ward" />
+        <input required
           :disabled="loading"
           placeholder="pvc number"
           v-model="info.pvc"
         />
-        <input
+        <input required
           :disabled="loading"
           placeholder="phone number"
           v-model="info.tel"
         />
-        <input
+        <input required
           :disabled="loading"
           placeholder="polling unit"
           v-model="info.unit"
         />
-        <input
+        <input required
           :disabled="loading"
           placeholder="residential address"
           v-model="info.address"
