@@ -1,4 +1,5 @@
 <template>
+  <Navbar1 />
   <section className="form py-10">
     <div className="max-w-[500px] mx-auto p-5 rounded-lg border">
       <h1 className="text-xl font-bold  text-green-400 uppercase mb-5">
@@ -27,6 +28,8 @@ import InputComponent from "../components/Input.vue";
 import axios from "axios";
 import useDataStore from "../stores/data";
 import useErrorStore from "../stores/error";
+import Navbar from "../components/Navbar.vue";
+import Navbar1 from "../components/Navbar.vue";
 
 export default {
   data() {
@@ -40,7 +43,7 @@ export default {
 
     return { dataStore, errorStore };
   },
-  components: { InputComponent },
+  components: { InputComponent, Navbar, Navbar1 },
   methods: {
     submit() {
       this.loading = true;
