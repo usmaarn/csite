@@ -80,15 +80,21 @@ import useDataStore from "../stores/data";
 import html2canvas from "html2canvas";
 
 export default {
+  beforeMount() {
+    if (!sessionStorage.getItem("username")) {
+      location.href = "/form";
+    }
+  },
   setup() {
     const store = useDataStore();
     const username = sessionStorage.getItem("username");
     return { store, username };
   },
-  data(){
+  data() {
     return {
       candidate: this.store.cand[0],
-    }
+      image: null,
+    };
   },
   methods: {
     handleChange(e) {
@@ -105,7 +111,7 @@ export default {
       html2canvas(flier).then((canvas) => {
         let a = document.createElement("a");
         a.href = canvas.toDataURL("image/png");
-        a.download = this.store.data.name + Date.now();
+        a.download = Date.now();
         a.click();
         flier.classList.remove("flier");
       });
