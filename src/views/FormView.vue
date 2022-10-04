@@ -87,8 +87,8 @@ export default {
       // this.loading = true;
       addUser(this.info)
         .then(() => {
-          this.store.data = this.info;
-          this.$router.push("/poster");
+          sessionStorage.setItem("username", this.info.name);
+          location.href = "/poster";
         })
         .catch((err) => (this.error = err.message));
     },

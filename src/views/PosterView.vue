@@ -11,14 +11,14 @@
     <div className="sub-wrapper">
       <div className="p-5">
         <div className="absolute w-full h-full overflow-hidden opacity-10">
-          <img :src="data.img" className="object-cover w-full h-full" />
+          <img :src="candidate.img" className="object-cover w-full h-full" />
         </div>
         <div className="flex items-start justify-between z-50">
           <div className="flex items-center">
-            <img :src="data.img" class="h-16" />
+            <img :src="candidate.img" class="h-16" />
             <h1 className="logo-text">
-              <p className="text-green-500">{{ data.candidate }}</p>
-              <p className="text-red-500">{{ data.name }}</p>
+              <p className="text-green-500">{{ candidate.candidate }}</p>
+              <p className="text-red-500">{{ candidate.name }}</p>
               <p className="text-blue-500">movement</p>
             </h1>
           </div>
@@ -28,28 +28,34 @@
         <div className="grid grid-cols-5 z-10 pt-5 gap-5">
           <div class="col-span-2">
             <div className="avatar-wrapper" @click="this.$refs.input.click()">
-              <input type="file" hidden @change="handleClick" accept="image/*" ref="input" />
+              <input
+                type="file"
+                hidden
+                @change="handleClick"
+                accept="image/*"
+                ref="input"
+              />
               <img v-if="image" :src="imageUrl" />
               <span v-else>click here to upload image</span>
             </div>
           </div>
           <div className="col-span-3 flex flex-col items-center">
             <p className="my-name-is">My name is</p>
-            <h1 className="name">{{ store.data.name }}</h1>
+            <h1 className="name">{{ username }}</h1>
             <h3 className="i-will-vote">and i will vote</h3>
             <h3 className="candidate space-x-2">
-              <span>{{ data.candidate }}</span>
-              <span v-if="data.vice">&</span>
-              <span>{{ data.vice }}</span>
+              <span>{{ candidate.candidate }}</span>
+              <span v-if="candidate.vice">&</span>
+              <span>{{ candidate.vice }}</span>
             </h3>
 
             <h1 className="post">
               <span className="as">as</span>
               <div>
-                <p class="tracking-widest">{{ data.post }}</p>
-                <p v-if="data.vicePost">{{ data.vicePost }}</p>
+                <p class="tracking-widest">{{ candidate.post }}</p>
+                <p v-if="candidate.vicePost">{{ candidate.vicePost }}</p>
               </div>
-              <span v-if="data.vicePost">&</span>
+              <span v-if="candidate.vicePost">&</span>
             </h1>
 
             <div class="">
@@ -74,26 +80,20 @@ import useDataStore from "../stores/data";
 import html2canvas from "html2canvas";
 
 export default {
-  beforeMount() {
-    console.log(this.store.data);
-    if (!this.store.data) {
-      return location.href = '/form';
-    }
-  },
   setup() {
     const store = useDataStore();
-    return { store };
+    const username = sessionStorage.getItem("username");
+    return { store, username };
   },
-  data() {
+  data(){
     return {
-    data: this.store.cand[0],
-      image: null,
-    };
+      candidate: this.store.cand[0],
+    }
   },
   methods: {
     handleChange(e) {
       let selected = this.store.cand.find((c) => c.id == e.target.value);
-      this.data = selected;
+      this.candidate = selected;
     },
     handleClick(e) {
       let file = e.target.files[0];
@@ -103,7 +103,6 @@ export default {
       const flier = this.$refs.flier;
       flier.classList.add("flier");
       html2canvas(flier).then((canvas) => {
-        // return document.body.append(canvas);
         let a = document.createElement("a");
         a.href = canvas.toDataURL("image/png");
         a.download = this.store.data.name + Date.now();
