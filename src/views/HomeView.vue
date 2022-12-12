@@ -29,7 +29,7 @@ const auth = useAuthStore();
           <h3 class="text-3xl text-center md:text-left md:text-6xl font-bold text-zinc-400">Senatorial Movement</h3>
           <div class="flex flex-col md:flex-row gap-5">
             <button class="px-10 py-5 rounded bg-green-500 font-bold shadow">
-              Verify your PVC status
+              Verify Your PVC Status
             </button>
             <button
               class="px-10 py-5 rounded border border-white/60 text-white/60 hover:bg-white/60 hover:text-black font-bold shadow">
