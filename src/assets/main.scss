@@ -16,14 +16,6 @@ html, body {font-family: raleway, 'sans-serif';}
     @apply px-10 py-2.5 rounded bg-green-400 text-white hover:opacity-60 font-bold;
   }
 
-.wrapper {
-  min-height: 100vh;
-  background-image: linear-gradient(red, rgba(0,0,0,0.5)), url('/bat.jpeg');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 .form .movement {
   @apply text-red-400;
 }
