@@ -11,7 +11,7 @@ const auth = useAuthStore();
 
     <nav class="p-5 h-[80px] md:h-[100px] md:px-24 flex items-center bg-black/30 justify-between">
       <a href="#">
-        <img src="/dattijo-logo.png" alt="" class="h-12 sm:h-16">
+        <img src="dattijo-logo.png" alt="" class="h-12 sm:h-16">
       </a>
 
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
